@@ -1,0 +1,15 @@
+.navigation {
+  padding: 20px;
+}
+.active {
+  color: green;
+}
+
+.inactive {
+  color: black;
+  text-decoration: none;
+}
+
+.link:not(:last-child) {
+  margin-right: 20px;
+}
