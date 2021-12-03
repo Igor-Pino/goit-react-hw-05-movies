@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom';
-
 import { useState, useEffect } from 'react';
 import * as GetMovieApi from '../Services/GetMovieApi';
 import '../Styles/CommonStyles.css';
+import Home from '../Home';
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
@@ -10,16 +9,5 @@ export default function HomePage() {
     GetMovieApi.getTrandingMovies().then(setMovies);
   }, []);
 
-  return (
-    <ul>
-      {movies &&
-        movies.map(({ id, title }) => {
-          return (
-            <li key={id}>
-              <Link to={`/movies/${id}`}>{title}</Link>
-            </li>
-          );
-        })}
-    </ul>
-  );
+  return <Home movies={movies} />;
 }

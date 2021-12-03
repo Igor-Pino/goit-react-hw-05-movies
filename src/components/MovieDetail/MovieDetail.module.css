@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 15px;
+}
+
+.movieTitle {
+  font-size: 25px;
+}
+
+.movie_details {
+  padding: 15px;
+  display: flex;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.imageThumb {
+  margin-right: 20px;
+}
+
+.movieInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.label_score {
+  font-weight: 600;
+}
+
+.overview {
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+}
+
+.label_overview {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.label_genres {
+  font-weight: 600;
+}
+
+.navLink {
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.navLink_container {
+  border-bottom: 2px solid black;
+}

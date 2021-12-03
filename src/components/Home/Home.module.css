@@ -1,0 +1,21 @@
+.list {
+  display: block;
+  margin-left: 30px;
+}
+
+.item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.item {
+  list-style: none;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.link:hover {
+  color: blue;
+}

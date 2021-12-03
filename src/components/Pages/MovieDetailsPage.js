@@ -11,7 +11,5 @@ export default function MovieDetails() {
     GetMovieApi.getMovieDetails(movieId).then(setMovieInfo);
   }, [movieId]);
 
-  console.log(movieInfo);
-
   return <div>{movieInfo && <MovieDetail movie={movieInfo} />}</div>;
 }

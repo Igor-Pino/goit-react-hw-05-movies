@@ -1,0 +1,18 @@
+.castList {
+  list-style: none;
+}
+
+.actor_name {
+  position: relative;
+}
+
+.actor_name::before {
+  content: '';
+  position: absolute;
+  bottom: 7px;
+  left: -10px;
+  width: 6px;
+  height: 6px;
+  background-color: #000;
+  border-radius: 50%;
+}
