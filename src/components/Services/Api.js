@@ -8,23 +8,10 @@ const api = axios.create({
   },
 });
 
-async function getReviews(movieId) {
-  try {
-    const { data } = await api.get(`movie/${movieId}/reviews`);
-    return data;
-  } catch (e) {
-    console.log(e);
-  }
-}
-
 async function getMoviesByQuery(query) {
-  try {
-    const { data } = await api.get(`search/movie?query=${query}`);
+  const { data } = await api.get(`search/movie?query=${query}`);
 
-    return data;
-  } catch (e) {
-    console.log(e);
-  }
+  return data;
 }
 
-export { getReviews, getMoviesByQuery };
+export { getMoviesByQuery };
