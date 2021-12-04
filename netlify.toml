@@ -1,0 +1,7 @@
+[build]
+publish = "build"
+
+[[redirects]]
+from = '/*'
+index = './index.hml'
+status = 200
