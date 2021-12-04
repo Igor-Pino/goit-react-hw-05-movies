@@ -8,9 +8,21 @@ export default function ReviewsPage() {
   const { movieId } = useParams();
 
   useEffect(() => {
-    GetMovieApi.getMovieReviews(movieId).then(setReviews);
+    const fetchMovieReviews = () => {
+      GetMovieApi.getMovieReviews(movieId)
+        .then(response => {
+          setReviews(response);
+          window.scrollTo({
+            top: 450,
+            behavior: 'smooth',
+          });
+        })
+        .catch(error => console.log(error.message))
+        .finally();
+    };
+    fetchMovieReviews();
   }, [movieId]);
-  console.log(reviews.length);
+
   return (
     <div>{reviews.length ? <Reviews movieReviews={reviews} /> : <p>We have no review yet</p>}</div>
   );

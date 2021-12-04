@@ -8,7 +8,19 @@ export default function CastPage() {
   const [cast, setCast] = useState('');
 
   useEffect(() => {
-    GetMovieApi.getMovieCast(movieId).then(setCast);
+    const fetchMovieCast = () => {
+      GetMovieApi.getMovieCast(movieId)
+        .then(response => {
+          setCast(response);
+          window.scrollTo({
+            top: 450,
+            behavior: 'smooth',
+          });
+        })
+        .catch(error => console.log(error.message))
+        .finally();
+    };
+    fetchMovieCast();
   }, [movieId]);
 
   console.log(cast);

@@ -1,0 +1,33 @@
+.form {
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  margin-right: 10px;
+  padding: 5px;
+  border: 1px solid grey;
+  border-radius: 4px;
+  height: 25px;
+}
+
+.formButton {
+  height: 25px;
+
+  cursor: pointer;
+  border: 1px solid grey;
+  border-radius: 4px;
+}
+
+.input:focus {
+  outline: 1px solid green;
+}
+
+.formButton:hover {
+  border-color: green;
+}
+
+.input:hover {
+  border-color: green;
+}

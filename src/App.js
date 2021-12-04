@@ -1,9 +1,10 @@
 import { Routes, Route, Navigate } from 'react-router';
 import { lazy, Suspense } from 'react';
+import './components/Styles/CommonStyles.css';
+import Loader from 'react-loader-spinner';
 import HeaderNav from './components/HeaderNav';
 import CastPage from './components/Pages/CastPage';
 import ReviewsPage from './components/Pages/ReviewsPage.js';
-import './components/Styles/CommonStyles.css';
 
 const HomePage = lazy(() => import('./components/Pages/HomePage.js'));
 const MoviesPage = lazy(() => import('./components/Pages/MoviesPage.js'));
@@ -13,7 +14,7 @@ export default function App() {
   return (
     <div>
       <HeaderNav />
-      <Suspense fallback={<h1>Loading</h1>}>
+      <Suspense fallback={<Loader type="ThreeDots" color="#008000" height={80} width={80} />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="movies" element={<MoviesPage />} />

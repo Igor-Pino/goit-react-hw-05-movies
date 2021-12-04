@@ -1,55 +1,41 @@
 import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router';
 import * as GetMovieApi from '../Services/GetMovieApi';
 import MovieSearchForm from '../MoviesSearch/MovieSearchForm';
-// import { getMoviesByQuery } from '../Services/Api';
 import Home from '../Home';
 
 export default function MoviesPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState('');
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const [urlQuery] = useState(() => new URLSearchParams(location.search).get('query'));
+  const MainQuery = searchQuery || urlQuery;
+
   useEffect(() => {
-    GetMovieApi.getMovieSearch(searchQuery).then(setMovies);
-  }, [searchQuery]);
-
-  // useEffect(() => {
-  //   async function getMovies() {
-
-  //       const { results } = await getMoviesByQuery(searchQuery);
-
-  //       setMovies(results);
-
-  //   }
-
-  //   if (searchQuery) getMovies();
-  // }, [searchQuery]);
-
-  //   useEffect(()=> {
-  //     if (!searchQuery) {
-  //     return;
-  //     }
-
-  // const fetchMovies = () => {
-
-  //   GetMovieApi.getMovieSearch(searchQuery)
-  //   .then(setMovies)
-  //   .catch(error => console.log(error.message ))
-  //   .finally();
-
-  // };
-  //  fetchMovies()
-
-  // }, [searchQuery])
+    const fetchMovies = () => {
+      if (!MainQuery) return;
+      GetMovieApi.getMovieSearch(MainQuery)
+        .then(response => {
+          setMovies(response);
+        })
+        .catch(error => console.log(error.message))
+        .finally();
+    };
+    fetchMovies();
+  }, [MainQuery]);
 
   const handlerSearcQuery = query => {
+    navigate({ ...location, search: `query=${query}` });
     setSearchQuery(query);
   };
 
-  console.log(movies);
   return (
     <div>
       <MovieSearchForm handlerSearcQuery={handlerSearcQuery} />
-      <Home movies={movies} />
+      {movies && <Home movies={movies} />}
     </div>
   );
 }

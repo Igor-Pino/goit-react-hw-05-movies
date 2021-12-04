@@ -5,8 +5,15 @@ import Home from '../Home';
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
+
   useEffect(() => {
-    GetMovieApi.getTrandingMovies().then(setMovies);
+    const fetchTrandingMovies = () => {
+      GetMovieApi.getTrandingMovies()
+        .then(setMovies)
+        .catch(error => console.log(error.message))
+        .finally();
+    };
+    fetchTrandingMovies();
   }, []);
 
   return <Home movies={movies} />;

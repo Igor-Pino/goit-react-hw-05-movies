@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { ReactComponent as Icon } from '../images/icon-check.svg';
+import PropTypes from 'prop-types';
+import s from './SearchForm.module.css';
 
 export default function MovieSearchForm({ handlerSearcQuery }) {
   const [query, setQuery] = useState('');
@@ -15,8 +18,9 @@ export default function MovieSearchForm({ handlerSearcQuery }) {
   };
 
   return (
-    <form onSubmit={handlerSubmit}>
+    <form onSubmit={handlerSubmit} className={s.form}>
       <input
+        className={s.input}
         value={query}
         type="text"
         autoComplete="off"
@@ -24,6 +28,13 @@ export default function MovieSearchForm({ handlerSearcQuery }) {
         placeholder="Search movie"
         onChange={handelerChange}
       />
+      <button type="submit" className={s.formButton}>
+        <Icon width="22" height="14" classname={s.icon} />
+      </button>
     </form>
   );
 }
+
+MovieSearchForm.propTypes = {
+  handlerSearcQuery: PropTypes.func.isRequired,
+};
